@@ -23,9 +23,10 @@ import javax.swing.ImageIcon;
 import javax.swing.text.DocumentFilter;
 
 public class Calculator extends JFrame {
-	String operandl = "";
+	String operand1 = "";
 	String operator = "";
 
+	boolean isEqualsPress = false;
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtResult;
@@ -68,6 +69,10 @@ public class Calculator extends JFrame {
 		btnNumber0.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNumber0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (isEqualsPress) {
+					isEqualsPress = false;
+					txtResult.setText("");
+				}
 				String cmd = e.getActionCommand();
 				txtResult.setText(txtResult.getText() + cmd);
 			}
@@ -75,17 +80,13 @@ public class Calculator extends JFrame {
 		btnNumber0.setBounds(125, 283, 89, 40);
 		contentPane.add(btnNumber0);
 		
-		JButton btnEquals = new JButton("=");
-		btnEquals.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnEquals.setEnabled(false);
-		btnEquals.setForeground(new Color(0, 0, 0));
-		btnEquals.setBackground(new Color(0, 0, 0));
-		btnEquals.setBounds(219, 283, 89, 40);
-		contentPane.add(btnEquals);
-		
 		JButton btnAdd = new JButton("+");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String cmd = e.getActionCommand();
+				operator = cmd;
+				operand1 = txtResult.getText();
+				txtResult .setText("");
 			}
 		});
 		btnAdd.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -95,6 +96,10 @@ public class Calculator extends JFrame {
 		JButton btnNumber1 = new JButton("1");
 		btnNumber1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
+				if (isEqualsPress) {
+					isEqualsPress = false;
+					txtResult.setText("");
+				}
 				String cmd = e.getActionCommand(); //phương thức xử lý sự kiện của button
 				txtResult.setText(txtResult.getText() + cmd);
 			}
@@ -106,6 +111,10 @@ public class Calculator extends JFrame {
 		JButton btnNumber2 = new JButton("2");
 		btnNumber2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (isEqualsPress) {
+					isEqualsPress = false;
+					txtResult.setText("");
+				}
 				String cmd = e.getActionCommand();
 				txtResult.setText(txtResult.getText() + cmd);
 			}
@@ -117,6 +126,10 @@ public class Calculator extends JFrame {
 		JButton btnNumber3 = new JButton("3");
 		btnNumber3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (isEqualsPress) {
+					isEqualsPress = false;
+					txtResult.setText("");
+				}
 				String cmd = e.getActionCommand();
 				txtResult.setText(txtResult.getText() + cmd);
 			}
@@ -128,6 +141,10 @@ public class Calculator extends JFrame {
 		JButton btnSuptract = new JButton("-");
 		btnSuptract.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String cmd = e.getActionCommand();
+				operator = cmd;
+				operand1 = txtResult.getText();
+				txtResult .setText("");
 			}
 		});
 		btnSuptract.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -138,6 +155,10 @@ public class Calculator extends JFrame {
 		btnNumber4.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
+				if (isEqualsPress) {
+					isEqualsPress = false;
+					txtResult.setText("");
+				}
 				String cmd = e.getActionCommand();
 				txtResult.setText(txtResult.getText() + cmd);
 			}
@@ -150,6 +171,10 @@ public class Calculator extends JFrame {
 		btnNumber6.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNumber6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (isEqualsPress) {
+					isEqualsPress = false;
+					txtResult.setText("");
+				}
 				String cmd = e.getActionCommand();
 				txtResult.setText(txtResult.getText() + cmd);
 			}
@@ -162,7 +187,8 @@ public class Calculator extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String cmd = e.getActionCommand();
 				operator = cmd;
-				//operandl = 
+				operand1 = txtResult.getText();
+				txtResult .setText("");
 			}
 		});
 		btnMultiply.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -183,6 +209,10 @@ public class Calculator extends JFrame {
 		JButton btnNumber7 = new JButton("7");
 		btnNumber7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (isEqualsPress) {
+					isEqualsPress = false;
+					txtResult.setText("");
+				}
 				String cmd = e.getActionCommand();
 				txtResult.setText(txtResult.getText() + cmd);
 			}
@@ -194,6 +224,10 @@ public class Calculator extends JFrame {
 		JButton btnNumber8 = new JButton("8");
 		btnNumber8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (isEqualsPress) {
+					isEqualsPress = false;
+					txtResult.setText("");
+				}
 				String cmd = e.getActionCommand();
 				txtResult.setText(txtResult.getText() + cmd);
 			}
@@ -205,6 +239,10 @@ public class Calculator extends JFrame {
 		JButton btnNumber9 = new JButton("9");
 		btnNumber9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (isEqualsPress) {
+					isEqualsPress = false;
+					txtResult.setText("");
+				}
 				String cmd = e.getActionCommand();
 				txtResult.setText(txtResult.getText() + cmd);
 			}
@@ -212,10 +250,13 @@ public class Calculator extends JFrame {
 		btnNumber9.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNumber9.setBounds(219, 130, 89, 40);
 		contentPane.add(btnNumber9);
-		
 		JButton btnDivine = new JButton("/");
 		btnDivine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String cmd = e.getActionCommand();
+				operator = cmd;
+				operand1 = txtResult.getText();
+				txtResult .setText("");
 			}
 		});
 		btnDivine.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -229,6 +270,7 @@ public class Calculator extends JFrame {
 		JButton btnPlus = new JButton("+/-");
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				try {
 					double value = Double.parseDouble(txtResult.getText());
 					value = -value;
@@ -258,6 +300,34 @@ public class Calculator extends JFrame {
 		txtResult.setBounds(31, 11, 371, 57);
 		contentPane.add(txtResult);
 		txtResult.setColumns(5);
+		
+		JButton btnEquals = new JButton("=");
+		btnEquals.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (txtResult.getText().equals("") || operand1.equals("")) {
+					return;
+				}
+				try {
+					double oprand1 = Double.parseDouble(operand1);
+					double oprand2 = Double.parseDouble(txtResult.getText());
+					double result = 0;
+					if (operator.equals("+")) {
+						result = oprand1 + oprand2;
+					}else if (operator.equals("-")) {
+						result = oprand1 - oprand2;
+					}else if (operator.equals("*")) {
+						result = oprand1 * oprand2;
+					}else if (operator.equals("/")) {
+						result = oprand1 / oprand2;
+					}
+					txtResult.setText("" + result);
+					isEqualsPress = true;
+				} catch(Exception e2) {}
+			}
+		});
+		btnEquals.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnEquals.setBounds(219, 283, 89, 40);
+		contentPane.add(btnEquals);
 		// Tạo một DocumentFilter để giới hạn số kí tự
         ((AbstractDocument) txtResult.getDocument()).setDocumentFilter(new DocumentFilter() {
             private int maxCharacters = 15; // Giới hạn số kí tự
